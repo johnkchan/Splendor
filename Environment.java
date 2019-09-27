@@ -1,14 +1,15 @@
 import java.util.*;
 
 public class Environment {
-    public int playerCount;
-    public Hashtable<String, Integer> gemTokens;
-    public Noble[] nobles;
+    private Hashtable<String, Integer> gemTokens;
+    private Noble[] nobles;
+    private Player[] players;
+    private int turns = 0;
 
     public Environment(int playerCount) {
-        this.playerCount = playerCount;
         this.initializeTokens(playerCount);
         this.initializeNobles(playerCount);
+        this.initializePlayers(playerCount);
     }
 
     // initialize tokens based on # of players
@@ -70,13 +71,24 @@ public class Environment {
                     }
                 }
             }
-
             if (!isRepeated) {
                 randIntList[i] = randInt;
                 this.nobles[i] = allNobles[randInt];
-                this.nobles[i].display();
             }
         }
+    }
+
+    // initialize players based on # of players
+    private void initializePlayers(int playerCount) {
+        this.players = new Player[playerCount];
+        for (int i = 0; i < playerCount; i++) {
+            this.players[i] = new Player();
+            this.players[i].getPrestige();
+        }
+    }
+
+    public HashTable<String, Integer> getGemTokens() {
+        return gemTokens;
     }
 
     public void displayNobles() {

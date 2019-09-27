@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Player {
     private int prestige;
-    public Hashtable<String, Integer> gemTokens;
-    public Hashtable<String, Integer> cardTokens;
+    private Hashtable<String, Integer> gemTokens;
+    private Hashtable<String, Integer> cardTokens;
 
     public Player() {
         this.prestige = 0;
@@ -23,6 +23,10 @@ public class Player {
 
     public int getPrestige() {
         return this.prestige;
+    }
+
+    public void addPrestige(int prestige) {
+        this.prestige += prestige;
     }
 
     public void getGemCount() {
