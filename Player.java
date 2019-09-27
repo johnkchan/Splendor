@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Player {
+public class Player {
     private int prestige;
     public Hashtable<String, Integer> gemTokens;
     public Hashtable<String, Integer> cardTokens;

@@ -1,4 +1,4 @@
-class Card {
+public class Card {
     public int prestige;
     public int tier;
     public int[] cost;

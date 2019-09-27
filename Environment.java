@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Environment {
+public class Environment {
     public int playerCount;
     public Hashtable<String, Integer> gemTokens;
     public Noble[] nobles;
@@ -8,6 +8,7 @@ class Environment {
     public Environment(int playerCount) {
         this.playerCount = playerCount;
         this.initializeTokens(playerCount);
+        this.initializeNobles(playerCount);
     }
 
     // initialize tokens based on # of players
@@ -32,34 +33,55 @@ class Environment {
         this.gemTokens.put("Gold Joker", 5);
     }
 
+    // initialize random Nobles based on # of players
     private void initializeNobles(int playerCount) {
         Noble[] allNobles = new Noble[10];
 
         // Emerald, Sapphire, Ruby, Diamond, Onyx
-        this.nobles[0] = new Noble(new int[] { 4, 4, 0, 0, 0 });
-        this.nobles[1] = new Noble(new int[] { 0, 4, 4, 0, 0 });
-        this.nobles[2] = new Noble(new int[] { 0, 4, 0, 4, 0 });
-        this.nobles[3] = new Noble(new int[] { 0, 0, 4, 0, 4 });
-        this.nobles[4] = new Noble(new int[] { 0, 0, 0, 4, 4 });
-        this.nobles[5] = new Noble(new int[] { 3, 3, 3, 0, 0 });
-        this.nobles[6] = new Noble(new int[] { 3, 3, 0, 3, 0 });
-        this.nobles[7] = new Noble(new int[] { 3, 0, 3, 0, 3 });
-        this.nobles[8] = new Noble(new int[] { 0, 3, 0, 3, 3 });
-        this.nobles[9] = new Noble(new int[] { 0, 0, 3, 3, 3 });
+        allNobles[0] = new Noble(new int[] { 4, 4, 0, 0, 0 });
+        allNobles[1] = new Noble(new int[] { 0, 4, 4, 0, 0 });
+        allNobles[2] = new Noble(new int[] { 0, 4, 0, 4, 0 });
+        allNobles[3] = new Noble(new int[] { 0, 0, 4, 0, 4 });
+        allNobles[4] = new Noble(new int[] { 0, 0, 0, 4, 4 });
+        allNobles[5] = new Noble(new int[] { 3, 3, 3, 0, 0 });
+        allNobles[6] = new Noble(new int[] { 3, 3, 0, 3, 0 });
+        allNobles[7] = new Noble(new int[] { 3, 0, 3, 0, 3 });
+        allNobles[8] = new Noble(new int[] { 0, 3, 0, 3, 3 });
+        allNobles[9] = new Noble(new int[] { 0, 0, 3, 3, 3 });
+
+        int noblesCount = playerCount + 1;
+        this.nobles = new Noble[noblesCount];
+        int[] randIntList = new int[noblesCount];
 
         Random rand = new Random();
-        int rand_int = rand.nextInt(10);
+        int randInt = rand.nextInt(10);
+        boolean isRepeated;
 
-        boolean isRepeated = false;
-        Noble[] noblesInPlay = new Nobles[playerCount + 1];
-        
-        while (!isRepeated) {
-            rand_int = rand.nextInt(10);
+        for (int i = 0; i < noblesCount; i++) {
+            isRepeated = true;
+            while (isRepeated) {
+                randInt = rand.nextInt(10);
+                isRepeated = false;
+
+                // Check if random integer has been generated before
+                for (int num : randIntList) {
+                    if (num == randInt) {
+                        isRepeated = true;
+                    }
+                }
+            }
+
+            if (!isRepeated) {
+                randIntList[i] = randInt;
+                this.nobles[i] = allNobles[randInt];
+                this.nobles[i].display();
+            }
         }
-        Noble
-       
-
-        this.nobles = noblesInPlay;
     }
 
+    public void displayNobles() {
+        for (Noble nbl : this.nobles) {
+            nbl.display();
+        }
+    }
 }

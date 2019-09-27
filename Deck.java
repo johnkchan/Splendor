@@ -1,4 +1,4 @@
-class Deck {
+public class Deck {
     public static int count;
     public int tier;
 
