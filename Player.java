@@ -45,8 +45,9 @@ public class Player {
                 "[4] Purchase 1 face-up development card from the middle of the table or a previously reserved one.");
 
         String action;
+        String token;
         String[] validActions = new String[] { "1", "2", "3", "4" };
-        Hashtable<String, Integer> envGems = env.getGemTokens();
+        Hashtable<String, Integer> availableGems = env.getGemTokens();
         boolean isValidAction = false;
 
         do {
@@ -62,22 +63,31 @@ public class Player {
 
         switch (action) {
         case "1":
-            // do {
-            // System.out.println("Gem Type #1: ");
-            // String token1 = System.console().readLine();
-            // System.out.println("Gem Type #2: ");
-            // String token2 = System.console().readLine();
-            // System.out.println("Gem Type #3: ");
-            // String token3 = System.console().readLine();
-            // } while (token1 == token2 || token1 == token3 || token2 == token3);
-            // takeThreeTokens(token1, token2, token3);
+            String[] tokens = new String[3];
+            boolean isRepeated;
+
+            for (int i = 0; i < 3; i++) {
+                do {
+                    System.out.print("Gem Type #" + (i + 1) + ": ");
+                    token = System.console().readLine().toLowerCase();
+                    isRepeated = false;
+
+                    for (String tkn : tokens) {
+                        if (token.equals(tkn)) {
+                            System.out.println("Please Enter 3 Unique Gem Types.");
+                            isRepeated = true;
+                        }
+                    }
+                } while (!this.isValidToken(token) || isRepeated);
+                tokens[i] = token;
+            }
+            takeThreeTokens(tokens, env);
             break;
         case "2":
-            String token;
             do {
                 System.out.print("Gem Type: ");
                 token = System.console().readLine().toLowerCase();
-            } while (!this.isValidToken(token) || envGems.get(token) <= 3);
+            } while (!this.isValidToken(token) || availableGems.get(token) <= 3);
 
             takeTwoTokens(token, env);
             break;
@@ -88,6 +98,8 @@ public class Player {
         default:
             // System.out.Println("Invalid action");
         }
+
+        env.displayGems();
     }
 
     // Helper function to validate token input
@@ -101,16 +113,15 @@ public class Player {
         return isValidToken;
     }
 
-    public boolean takeThreeTokens(String token1, String token2, String token3) {
-        this.gemTokens.replace(token1, this.gemTokens.get(token1) + 1);
-        this.gemTokens.replace(token2, this.gemTokens.get(token2) + 1);
-        this.gemTokens.replace(token3, this.gemTokens.get(token3) + 1);
-        return true;
+    public void takeThreeTokens(String[] tokens, Environment env) {
+        for (String token : tokens) {
+            this.gemTokens.replace(token, this.gemTokens.get(token) + 1);
+            env.takeGemTokens(token, 1);
+        }
     }
 
     public void takeTwoTokens(String token, Environment env) {
         this.gemTokens.replace(token, this.gemTokens.get(token) + 2);
-        System.out.println("2 " + token + " tokens have been added.");
         env.takeGemTokens(token, 2);
     }
 }

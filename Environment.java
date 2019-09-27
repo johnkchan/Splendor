@@ -96,6 +96,16 @@ public class Environment {
         this.gemTokens.replace(token, this.gemTokens.get(token) - amnt);
     }
 
+    public void displayGems() {
+        System.out.println("[Gem]\t\t" + "[Count]");
+        System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.gemTokens.get("emerald"));
+        System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.gemTokens.get("sapphire"));
+        System.out.println(ConsoleColors.RED + "Ruby:\t\t" + this.gemTokens.get("ruby"));
+        System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond"));
+        System.out.println(ConsoleColors.BLACK + "Onyx:\t\t" + this.gemTokens.get("onyx"));
+        System.out.println(ConsoleColors.RESET);
+    }
+
     public void displayNobles() {
         for (Noble nbl : this.nobles) {
             nbl.display();
