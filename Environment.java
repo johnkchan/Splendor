@@ -10,6 +10,7 @@ public class Environment {
         this.initializeTokens(playerCount);
         this.initializeNobles(playerCount);
         this.initializePlayers(playerCount);
+        this.initializeGame(playerCount);
     }
 
     // initialize tokens based on # of players
@@ -95,5 +96,22 @@ public class Environment {
         for (Noble nbl : this.nobles) {
             nbl.display();
         }
+    }
+
+    private void initializeGame(int playerCount) {
+        boolean isEnd = false;
+
+        while (!isEnd) {
+            for (Player plyr : this.players) {
+                plyr.actions(this);
+
+                // Check if any players has accumulated 15+ prestige points
+                if (plyr.getPrestige() >= 15) {
+                    isEnd = true;
+                }
+            }
+
+        }
+
     }
 }
