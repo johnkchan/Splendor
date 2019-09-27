@@ -24,7 +24,7 @@ public class Environment {
         }
 
         // Add Gem Tokens Based on Amount of Players
-        String[] typesOfGems = { "Emerald", "Sapphire", "Ruby", "Diamond", "Onyx" };
+        String[] typesOfGems = { "emerald", "sapphire", "ruby", "diamond", "onyx" };
         this.gemTokens = new Hashtable<String, Integer>();
 
         for (String gem : typesOfGems) {
@@ -32,7 +32,7 @@ public class Environment {
         }
 
         // Add 5 Gold Joker Tokens
-        this.gemTokens.put("Gold Joker", 5);
+        this.gemTokens.put("gold joker", 5);
     }
 
     // initialize random Nobles based on # of players
@@ -88,8 +88,12 @@ public class Environment {
         }
     }
 
-    public HashTable<String, Integer> getGemTokens() {
-        return gemTokens;
+    public Hashtable<String, Integer> getGemTokens() {
+        return this.gemTokens;
+    }
+
+    public void takeGemTokens(String token, int amnt) {
+        this.gemTokens.replace(token, this.gemTokens.get(token) - amnt);
     }
 
     public void displayNobles() {
