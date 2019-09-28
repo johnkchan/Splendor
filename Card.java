@@ -1,14 +1,18 @@
 public class Card {
-    public int prestige;
-    public int tier;
     public int[] cost;
-    public string tokenType;
+    public String tokenType;
+    public int prestige = 0;
 
-    public Card(int prestige, int tier, int[] cost, string tokenType) {
+    // Constructor for cards with prestige points
+    public Card(int[] cost, String tokenType, int prestige) {
+        this.cost = cost;
+        this.tokenType = tokenType;
         this.prestige = prestige;
-        this.tier = tier;
+    }
+
+    // Constructor for cards without prestige points
+    public Card(int[] cost, String tokenType) {
         this.cost = cost;
         this.tokenType = tokenType;
     }
-
 }
