@@ -78,50 +78,46 @@ public class Environment {
 
         // Diamond, Sapphire, Emerald, Ruby, Onyx
         // Tier 1 Deck
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 0 }, 0));
-
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 0 }, 0));
-
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 0 }, 0));
-
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("ruby", new int[] { 0, 0, 0, 0, 0 }, 0));
-
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 0));
-        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 0, 0, 0 }, 1));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 1, 1, 1, 1 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 1, 2, 1, 1 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 0, 2, 1 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 2, 0, 0, 2 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 3, 0, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 2, 2, 0, 1 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 3, 1, 0, 0, 1 }, 0));
+        this.decks[0].addCard(new Card("diamond", new int[] { 0, 0, 4, 0, 0 }, 1));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 1, 0, 1, 1, 1 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 1, 0, 1, 2, 1 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 1, 3, 1, 0 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 1, 0, 2, 2, 0 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 2, 0, 2 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 1, 0, 0, 0, 2 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 0, 3 }, 0));
+        this.decks[0].addCard(new Card("sapphire", new int[] { 0, 0, 0, 4, 0 }, 1));
+        this.decks[0].addCard(new Card("emerald", new int[] { 1, 1, 0, 1, 1 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 1, 1, 0, 1, 2 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 1, 3, 1, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 0, 1, 0, 2, 2 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 0, 2, 0, 2, 0 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 2, 1, 0, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 3, 0 }, 0));
+        this.decks[0].addCard(new Card("emerald", new int[] { 0, 0, 0, 0, 4 }, 1));
+        this.decks[0].addCard(new Card("ruby", new int[] { 1, 1, 1, 0, 1 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 2, 1, 1, 0, 1 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 1, 0, 0, 1, 3 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 2, 0, 0, 2, 0 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 0, 2, 1, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 3, 0, 0, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 2, 0, 1, 0, 2 }, 0));
+        this.decks[0].addCard(new Card("ruby", new int[] { 4, 0, 0, 0, 0 }, 1));
+        this.decks[0].addCard(new Card("onyx", new int[] { 1, 2, 1, 1, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 1, 1, 1, 1, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 1, 3, 1 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 2, 2, 0, 1, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 2, 0, 2, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 2, 1, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 0, 0, 3, 0, 0 }, 0));
+        this.decks[0].addCard(new Card("onyx", new int[] { 0, 4, 0, 0, 0 }, 1));
 
         // Tier 2 Deck
         this.decks[1].addCard(new Card("diamond", new int[] { 0, 0, 3, 2, 2 }, 1));
