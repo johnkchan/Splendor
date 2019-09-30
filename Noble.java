@@ -19,6 +19,5 @@ public class Noble {
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.cardCost[3]);
         System.out.println(ConsoleColors.BLACK + "Onyx:\t\t" + this.cardCost[4]);
         System.out.println(ConsoleColors.RESET);
-
     }
 }

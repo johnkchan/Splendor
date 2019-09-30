@@ -4,11 +4,13 @@ public class Environment {
     private Hashtable<String, Integer> gemTokens;
     private Noble[] nobles;
     private Player[] players;
+    private Deck[] decks;
     private int turns = 0;
 
     public Environment(int playerCount) {
         this.initializeTokens(playerCount);
         this.initializeNobles(playerCount);
+        this.initializeDecks();
         this.initializePlayers(playerCount);
         this.initializeGame(playerCount);
     }
@@ -77,6 +79,13 @@ public class Environment {
                 this.nobles[i] = allNobles[randInt];
             }
         }
+    }
+
+    // initialize tier 1,2,3 decks
+    private void initializeDecks() {
+        Deck tier1 = new Deck(1);
+        Deck tier2 = new Deck(2);
+        Deck tier3 = new Deck(3);
     }
 
     // initialize players based on # of players
