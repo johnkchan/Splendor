@@ -109,6 +109,7 @@ public class Player {
         }
 
         env.displayGems();
+
     }
 
     // Helper function to validate token input

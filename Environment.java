@@ -216,11 +216,11 @@ public class Environment {
         boolean isEnd = false;
 
         while (!isEnd) {
-            for (Player plyr : this.players) {
-                plyr.actions(this);
-
+            for (Player player : this.players) {
+                player.actions(this);
+                player.incrementTurns();
                 // Check if any players has accumulated 15+ prestige points
-                if (plyr.getPrestige() >= 15) {
+                if (player.getPrestige() >= 15) {
                     isEnd = true;
                 }
             }
