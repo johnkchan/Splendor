@@ -5,6 +5,7 @@ public class Player {
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> cardTokens;
+    private int turns = 0;
 
     public Player() {
         this.prestige = 0;
@@ -30,6 +31,14 @@ public class Player {
 
     public void getGemCount() {
         System.out.println(this.gemTokens);
+    }
+
+    public int getTurns() {
+        return this.turns;
+    }
+
+    public void incrementTurns() {
+        turns++;
     }
 
     public void actions(Environment env) {
