@@ -46,7 +46,7 @@ public class Player {
 
         String action;
         String token;
-        String[] validActions = new String[] { "1", "2", "3", "4" };
+        String[] validActions = { "1", "2", "3", "4" };
         Hashtable<String, Integer> availableGems = env.getGemTokens();
         boolean isValidAction = false;
 
