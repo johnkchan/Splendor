@@ -39,9 +39,11 @@ public class Environment {
 
     // initialize random Nobles based on # of players
     private void initializeNobles(int playerCount) {
-        Noble[] allNobles = new Noble[10];
+        int noblesCount = playerCount + 1;
+        this.nobles = new Noble[noblesCount];
 
         // Emerald, Sapphire, Ruby, Diamond, Onyx
+        Noble[] allNobles = new Noble[10];
         allNobles[0] = new Noble(new int[] { 4, 4, 0, 0, 0 });
         allNobles[1] = new Noble(new int[] { 0, 4, 4, 0, 0 });
         allNobles[2] = new Noble(new int[] { 0, 4, 0, 4, 0 });
@@ -53,31 +55,21 @@ public class Environment {
         allNobles[8] = new Noble(new int[] { 0, 3, 0, 3, 3 });
         allNobles[9] = new Noble(new int[] { 0, 0, 3, 3, 3 });
 
-        int noblesCount = playerCount + 1;
-        this.nobles = new Noble[noblesCount];
-        int[] randIntList = new int[noblesCount];
-
+        // Shuffle all nobles
         Random rand = new Random();
-        int randInt = rand.nextInt(10);
-        boolean isRepeated;
+        for (int i = 0; i < 10; i++) {
+
+            // Random for remaining positions.
+            int r = i + rand.nextInt(10 - i);
+
+            // swapping the elements
+            Noble temp = allNobles[r];
+            allNobles[r] = allNobles[i];
+            allNobles[i] = temp;
+        }
 
         for (int i = 0; i < noblesCount; i++) {
-            isRepeated = true;
-            while (isRepeated) {
-                randInt = rand.nextInt(10);
-                isRepeated = false;
-
-                // Check if random integer has been generated before
-                for (int num : randIntList) {
-                    if (num == randInt) {
-                        isRepeated = true;
-                    }
-                }
-            }
-            if (!isRepeated) {
-                randIntList[i] = randInt;
-                this.nobles[i] = allNobles[randInt];
-            }
+            this.nobles[i] = allNobles[i];
         }
     }
 
