@@ -22,14 +22,24 @@ public class Deck {
         return this.tier;
     }
 
-    public void shuffle() {
-        Random rand = new Random();
-        int randInt = rand.nextInt(10);
-    }
-
-    public void addCard(Card[] card) {
+    public void addCard(Card card) {
         this.cards[count] = card;
         count++;
+    }
+
+    public void shuffle() {
+        Random rand = new Random();
+
+        for (int i = 0; i < this.count; i++) {
+
+            // Random for remaining positions.
+            int r = i + rand.nextInt(this.count - i);
+
+            // swapping the elements
+            Card temp = this.cards[r];
+            this.cards[r] = this.cards[i];
+            this.cards[i] = temp;
+        }
     }
 
 }

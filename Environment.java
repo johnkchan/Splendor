@@ -90,25 +90,44 @@ public class Environment {
         // Emerald, Sapphire, Ruby, Diamond, Onyx
 
         // Tier 1 Deck
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
+        // this.decks[0].addCard(new Card());
+        // this.decks[0].addCard(new Card());
+        // this.decks[0].addCard(new Card());
+        // this.decks[0].addCard(new Card());
+        // this.decks[0].addCard(new Card());
 
         // Tier 2 Deck
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
+        // this.decks[1].addCard(new Card());
+        // this.decks[1].addCard(new Card());
+        // this.decks[1].addCard(new Card());
+        // this.decks[1].addCard(new Card());
+        // this.decks[1].addCard(new Card());
 
         // Tier 3 Deck
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
-        this.decks[0].addCard(new Card());
+        this.decks[2].addCard(new Card("emerald", new int[] { 0, 3, 3, 5, 3 }, 3));
+        this.decks[2].addCard(new Card("emerald", new int[] { 3, 6, 0, 3, 0 }, 4));
+        this.decks[2].addCard(new Card("emerald", new int[] { 0, 7, 0, 0, 0 }, 4));
+        this.decks[2].addCard(new Card("emerald", new int[] { 3, 7, 0, 0, 0 }, 5));
+        this.decks[2].addCard(new Card("sapphire", new int[] { 3, 0, 3, 3, 5 }, 3));
+        this.decks[2].addCard(new Card("sapphire", new int[] { 0, 3, 0, 6, 3 }, 4));
+        this.decks[2].addCard(new Card("sapphire", new int[] { 0, 0, 0, 7, 0 }, 4));
+        this.decks[2].addCard(new Card("sapphire", new int[] { 0, 3, 0, 7, 0 }, 5));
+        this.decks[2].addCard(new Card("ruby", new int[] { 3, 5, 0, 3, 3 }, 3));
+        this.decks[2].addCard(new Card("ruby", new int[] { 7, 0, 0, 0, 0 }, 4));
+        this.decks[2].addCard(new Card("ruby", new int[] { 6, 3, 3, 0, 0 }, 4));
+        this.decks[2].addCard(new Card("ruby", new int[] { 7, 0, 3, 0, 0 }, 5));
+        this.decks[2].addCard(new Card("diamond", new int[] { 3, 3, 5, 0, 3 }, 3));
+        this.decks[2].addCard(new Card("diamond", new int[] { 0, 0, 3, 3, 6 }, 4));
+        this.decks[2].addCard(new Card("diamond", new int[] { 0, 0, 0, 0, 7 }, 4));
+        this.decks[2].addCard(new Card("diamond", new int[] { 0, 0, 0, 3, 7 }, 5));
+        this.decks[2].addCard(new Card("onyx", new int[] { 5, 3, 3, 3, 0 }, 3));
+        this.decks[2].addCard(new Card("onyx", new int[] { 0, 0, 7, 0, 0 }, 4));
+        this.decks[2].addCard(new Card("onyx", new int[] { 3, 0, 6, 0, 3 }, 4));
+        this.decks[2].addCard(new Card("onyx", new int[] { 0, 0, 7, 0, 3 }, 5));
+
+        for (Deck deck : this.decks) {
+            deck.shuffle();
+        }
     }
 
     // initialize players based on # of players
