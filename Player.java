@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Player {
     private int prestige;
-    private String[] gemTypes = { "emerald", "sapphire", "ruby", "diamond", "onyx", "gold joker" };
+    private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> cardTokens;
 
