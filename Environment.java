@@ -218,6 +218,8 @@ public class Environment {
     }
 
     public void displayTable() {
+        String substring = "";
+
         for (int i = 0; i < 3; i++) {
             System.out.println("Tier " + this.decks[i].getTier());
             for (int j = 0; j < 4; j++) {
