@@ -10,6 +10,18 @@ public class Card {
         this.prestige = prestige;
     }
 
+    public String getTokenType() {
+        return this.tokenType;
+    }
+
+    public int[] getCost() {
+        return this.cost;
+    }
+
+    public int getPrestige() {
+        return this.prestige;
+    }
+
     public void display() {
         System.out.println("┌───────────────────────┐");
         System.out.println("│ Token: " + tokenType);

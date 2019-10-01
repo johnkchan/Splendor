@@ -48,10 +48,10 @@ public class Player {
 
     public void actions(Environment env) {
         System.out.println(
-                "============================================================================================================");
+                "==========================================================================================================================");
         System.out.println("Available Actions:");
         System.out.println(
-                "============================================================================================================");
+                "==========================================================================================================================");
         System.out.println("[1] Take 3 gem tokens of different colors.");
         System.out.println("[2] Take 2 gem tokens of the same color.");
         System.out.println("[3] Reserve 1 development card and take 1 gold token (joker).");
@@ -65,7 +65,7 @@ public class Player {
         boolean isValidAction = false;
 
         do {
-            System.out.print("Please Enter Action #: ");
+            System.out.print("Enter Action #: ");
             action = System.console().readLine();
 
             for (String validAction : validActions) {
@@ -142,7 +142,8 @@ public class Player {
         }
     }
 
-    private void purchaseDevelopmentCard(Environment env) {
+    private void purchaseDevelopmentCard(Card card, Environment env) {
         // TODO: Implement Function
+
     }
 }
