@@ -116,7 +116,7 @@ public class Player {
 
                     for (String tkn : tokens) {
                         if (token.equals(tkn)) {
-                            System.out.println("Please Enter 3 Unique Gem Types.");
+                            System.out.println("Enter 3 Unique Gem Types: Diamond, Sapphire, Emerald, Ruby, Onyx");
                             isRepeated = true;
                         }
                     }
