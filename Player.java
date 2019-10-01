@@ -47,11 +47,9 @@ public class Player {
     }
 
     public void displayTokens() {
-        System.out.println(ConsoleColors.WHITE_BOLD
-                + "==========================================================================================================================");
-        System.out.println("Player's Gem Tokens:");
+        System.out.println(ConsoleColors.WHITE_BOLD + "Player's Gem Tokens:");
         System.out.println(
-                "==========================================================================================================================");
+                "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond") + "\t\t"
                 + this.developmentTokens.get("diamond") + "\t\t"
@@ -72,11 +70,9 @@ public class Player {
     }
 
     public void actions(Environment env) {
-        System.out.println(
-                "==========================================================================================================================");
         System.out.println("Available Actions:");
         System.out.println(
-                "==========================================================================================================================");
+                "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println("[1] Take 3 gem tokens of different colors.");
         System.out.println("[2] Take 2 gem tokens of the same color.");
         System.out.println("[3] Reserve 1 development card and take 1 gold token (joker).");

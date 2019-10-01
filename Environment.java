@@ -202,7 +202,7 @@ public class Environment {
     }
 
     public void displayGems() {
-        System.out.println("[Gem]\t\t" + "[Count]");
+        System.out.println(ConsoleColors.YELLOW + "[Gem]\t\t" + "[Count]");
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond"));
         System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.gemTokens.get("sapphire"));
         System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.gemTokens.get("emerald"));
@@ -212,19 +212,39 @@ public class Environment {
     }
 
     public void displayNobles() {
-        for (Noble nbl : this.nobles) {
-            nbl.display();
+        String prestigeStr, headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
+        prestigeStr = headerStr = diamondStr = sapphireStr = emeraldStr = rubyStr = onyxStr = "";
+
+        System.out.println(ConsoleColors.WHITE_BOLD + "Nobles:");
+        System.out.println(
+                "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
+
+        for (Noble noble : this.nobles) {
+            prestigeStr += "Prestige: " + noble.getPrestige() + "\t\t\t";
+            headerStr += "[Card Type]\t[Cost]\t\t";
+            diamondStr += "Diamond :\t" + noble.getCardCost()[0] + "\t\t";
+            sapphireStr += "Sapphire:\t" + noble.getCardCost()[1] + "\t\t";
+            emeraldStr += "Emerald :\t" + noble.getCardCost()[2] + "\t\t";
+            rubyStr += "Ruby:\t\t" + noble.getCardCost()[3] + "\t\t";
+            onyxStr += "Onyx:\t\t" + noble.getCardCost()[4] + "\t\t";
         }
+
+        System.out.println(ConsoleColors.CYAN + prestigeStr);
+        System.out.println(ConsoleColors.YELLOW + headerStr);
+        System.out.println(ConsoleColors.WHITE + diamondStr);
+        System.out.println(ConsoleColors.BLUE + sapphireStr);
+        System.out.println(ConsoleColors.GREEN + emeraldStr);
+        System.out.println(ConsoleColors.RED + rubyStr);
+        System.out.println(ConsoleColors.PURPLE + onyxStr);
+        System.out.println(ConsoleColors.RESET);
     }
 
     public void displayTable() {
         String tokenStr, prestigeStr, headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
 
-        System.out.println(ConsoleColors.WHITE_BOLD
-                + "==========================================================================================================================");
-        System.out.println("Development Cards:");
+        System.out.println(ConsoleColors.WHITE_BOLD + "Development Cards:");
         System.out.println(
-                "==========================================================================================================================");
+                "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
         for (int i = 2; i >= 0; i--) {
             System.out.println(ConsoleColors.WHITE_UNDERLINED + "Tier " + this.decks[i].getTier());
@@ -258,6 +278,7 @@ public class Environment {
 
         while (!isEnd) {
             for (Player player : this.players) {
+                this.displayNobles();
                 this.displayTable();
                 player.displayTokens();
                 player.actions(this);
