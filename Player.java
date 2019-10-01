@@ -114,6 +114,7 @@ public class Player {
                     token = System.console().readLine().toLowerCase();
                     isRepeated = false;
 
+                    // Warn user if requested gem type is not valid
                     for (String tkn : tokens) {
                         if (token.equals(tkn)) {
                             System.out.println("Enter 3 Unique Gem Types: Diamond, Sapphire, Emerald, Ruby, Onyx");
@@ -131,6 +132,7 @@ public class Player {
                 System.out.print("Gem Type: ");
                 token = System.console().readLine().toLowerCase();
 
+                // Warn user if requested gem type is not valid
                 if (availableGems.get(token) <= 3) {
                     System.out.println("Selected Gem Has Less Than 4 Tokens Available, Reselect Different Gem Type");
                 }
@@ -141,7 +143,7 @@ public class Player {
         case "3":
             // Check if player has less than 3 reserved cards
             if (this.reserveCount < 3) {
-
+                System.out.println("You are unable to make any further reservations.");
             } else {
                 // reserveDevelopmentCard(card, env);
             }
