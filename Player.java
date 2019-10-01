@@ -130,6 +130,10 @@ public class Player {
             do {
                 System.out.print("Gem Type: ");
                 token = System.console().readLine().toLowerCase();
+
+                if (availableGems.get(token) <= 3) {
+                    System.out.println("Selected Gem Has Less Than 4 Tokens Available, Reselect Different Gem Type");
+                }
             } while (!this.isValidToken(token) || availableGems.get(token) <= 3);
 
             takeTwoTokens(token, env);
