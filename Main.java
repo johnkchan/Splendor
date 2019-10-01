@@ -1,5 +1,5 @@
 class Main {
     public static void main(String[] args) {
-        Environment environment = new Environment(4);
+        Environment game = new Environment(4);
     }
 }

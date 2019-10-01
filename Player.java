@@ -5,6 +5,7 @@ public class Player {
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> cardTokens;
+    private Card[] reserve;
     private int turns = 0;
 
     public Player() {
@@ -27,6 +28,10 @@ public class Player {
 
     public void addPrestige(int prestige) {
         this.prestige += prestige;
+    }
+
+    public void addToken(int amnt, String token) {
+        this.gemTokens.replace(token, this.gemTokens.get(token) + amnt);
     }
 
     public void getGemCount() {
@@ -70,8 +75,7 @@ public class Player {
             }
         } while (!isValidAction);
 
-        switch (action) {
-        case "1":
+        if (action == "1") {
             String[] tokens = new String[3];
             boolean isRepeated;
 
@@ -91,28 +95,23 @@ public class Player {
                 tokens[i] = token;
             }
             takeThreeTokens(tokens, env);
-            break;
-        case "2":
+        } else if (action == "2") {
             do {
                 System.out.print("Gem Type: ");
                 token = System.console().readLine().toLowerCase();
             } while (!this.isValidToken(token) || availableGems.get(token) <= 3);
 
             takeTwoTokens(token, env);
-            break;
-        case "3":
-            break;
-        case "4":
-            break;
-        default:
-            // System.out.Println("Invalid action");
+        } else if (action == "3") {
+            reserveDevelopmentCard(env);
+        } else if (action == "4") {
+
         }
 
         env.displayGems();
-
     }
 
-    // Helper function to validate token input
+    // Helper Function to Validate Token Input
     private boolean isValidToken(String token) {
         boolean isValidToken = false;
         for (String gem : this.gemTypes) {
@@ -125,13 +124,25 @@ public class Player {
 
     public void takeThreeTokens(String[] tokens, Environment env) {
         for (String token : tokens) {
-            this.gemTokens.replace(token, this.gemTokens.get(token) + 1);
-            env.takeGemTokens(token, 1);
+            this.addToken(1, token);
+            env.takeGemTokens(1, token);
         }
     }
 
     public void takeTwoTokens(String token, Environment env) {
-        this.gemTokens.replace(token, this.gemTokens.get(token) + 2);
-        env.takeGemTokens(token, 2);
+        this.addToken(2, token);
+        env.takeGemTokens(2, token);
+    }
+
+    private void reserveDevelopmentCard(Environment env) {
+        // TODO: Add reserve functionality
+        if (env.getGemTokens().get("gold joker") >= 1) {
+            this.addToken(1, "gold joker");
+            env.takeGemTokens(1, "gold joker");
+        }
+    }
+
+    private void purchaseDevelopmentCard(Environment env) {
+        // TODO: Implement Function
     }
 }

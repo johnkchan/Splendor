@@ -197,7 +197,7 @@ public class Environment {
         return this.gemTokens;
     }
 
-    public void takeGemTokens(String token, int amnt) {
+    public void takeGemTokens(int amnt, String token) {
         this.gemTokens.replace(token, this.gemTokens.get(token) - amnt);
     }
 
