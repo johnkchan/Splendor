@@ -12,6 +12,7 @@ public class Card {
 
     public void display() {
         System.out.println("Gem Type: " + tokenType);
+        System.out.println("Prestige: " + prestige);
         System.out.println("[Gem]\t\t" + "[Cost]");
         System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.cost[0]);
         System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.cost[1]);
@@ -19,6 +20,6 @@ public class Card {
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.cost[3]);
         System.out.println(ConsoleColors.BLACK + "Onyx:\t\t" + this.cost[4]);
         System.out.println(ConsoleColors.RESET);
-        System.out.println("Prestige: " + prestige);
+
     }
 }
