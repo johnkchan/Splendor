@@ -73,7 +73,7 @@ public class Player {
     }
 
     public void actions(Environment env) {
-        System.out.println("Available Actions:");
+        System.out.println("Players Actions:");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(
