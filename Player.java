@@ -54,15 +54,20 @@ public class Player {
                 "==========================================================================================================================");
         System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond") + "\t\t"
-                + this.developmentTokens.get("diamond"));
+                + this.developmentTokens.get("diamond") + "\t\t"
+                + (this.gemTokens.get("diamond") + this.developmentTokens.get("diamond")));
         System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.gemTokens.get("sapphire") + "\t\t"
-                + this.developmentTokens.get("sapphire"));
+                + this.developmentTokens.get("sapphire") + "\t\t"
+                + (this.gemTokens.get("sapphire") + this.developmentTokens.get("sapphire")));
         System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.gemTokens.get("emerald") + "\t\t"
-                + this.developmentTokens.get("emerald"));
+                + this.developmentTokens.get("emerald") + "\t\t"
+                + (this.gemTokens.get("emerald") + this.developmentTokens.get("emerald")));
         System.out.println(ConsoleColors.RED + "Ruby:\t\t" + this.gemTokens.get("ruby") + "\t\t"
-                + this.developmentTokens.get("ruby"));
+                + this.developmentTokens.get("ruby") + "\t\t"
+                + (this.gemTokens.get("ruby") + this.developmentTokens.get("ruby")));
         System.out.println(ConsoleColors.PURPLE + "Onyx:\t\t" + this.gemTokens.get("onyx") + "\t\t"
-                + this.developmentTokens.get("onyx"));
+                + this.developmentTokens.get("onyx") + "\t\t"
+                + (this.gemTokens.get("onyx") + this.developmentTokens.get("onyx")));
         System.out.println(ConsoleColors.RESET);
     }
 
