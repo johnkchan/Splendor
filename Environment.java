@@ -220,14 +220,14 @@ public class Environment {
     public void displayTable() {
         String tokenStr, prestigeStr, headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
 
-        System.out.println(
-                "==========================================================================================================================");
+        System.out.println(ConsoleColors.WHITE_BOLD
+                + "==========================================================================================================================");
         System.out.println("Development Cards:");
         System.out.println(
                 "==========================================================================================================================");
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Tier " + this.decks[i].getTier());
+        for (int i = 2; i >= 0; i--) {
+            System.out.println(ConsoleColors.WHITE_UNDERLINED + "Tier " + this.decks[i].getTier());
             tokenStr = prestigeStr = headerStr = diamondStr = sapphireStr = emeraldStr = rubyStr = onyxStr = "";
 
             for (int j = 0; j < 4; j++) {
@@ -235,21 +235,21 @@ public class Environment {
                 tokenStr += "Token: " + card.getTokenType() + "\t\t\t";
                 prestigeStr += "Prestige: " + card.getPrestige() + "\t\t\t";
                 headerStr += "[Gem Type]\t[Cost]\t\t";
-                diamondStr += "Diamond:\t" + card.getCost()[0] + "\t\t";
+                diamondStr += "Diamond :\t" + card.getCost()[0] + "\t\t";
                 sapphireStr += "Sapphire:\t" + card.getCost()[1] + "\t\t";
-                emeraldStr += "Emerald:\t" + card.getCost()[2] + "\t\t";
+                emeraldStr += "Emerald :\t" + card.getCost()[2] + "\t\t";
                 rubyStr += "Ruby:\t\t" + card.getCost()[3] + "\t\t";
                 onyxStr += "Onyx:\t\t" + card.getCost()[4] + "\t\t";
             }
-            System.out.println(tokenStr);
-            System.out.println(prestigeStr);
-            System.out.println(headerStr);
-            System.out.println(diamondStr);
-            System.out.println(sapphireStr);
-            System.out.println(emeraldStr);
-            System.out.println(rubyStr);
-            System.out.println(onyxStr);
-            System.out.println();
+            System.out.println(ConsoleColors.WHITE + tokenStr);
+            System.out.println(ConsoleColors.CYAN + prestigeStr);
+            System.out.println(ConsoleColors.YELLOW + headerStr);
+            System.out.println(ConsoleColors.WHITE + diamondStr);
+            System.out.println(ConsoleColors.BLUE + sapphireStr);
+            System.out.println(ConsoleColors.GREEN + emeraldStr);
+            System.out.println(ConsoleColors.RED + rubyStr);
+            System.out.println(ConsoleColors.PURPLE + onyxStr);
+            System.out.println(ConsoleColors.RESET);
         }
     }
 
@@ -259,6 +259,7 @@ public class Environment {
         while (!isEnd) {
             for (Player player : this.players) {
                 this.displayTable();
+                player.displayTokens();
                 player.actions(this);
                 player.incrementTurns();
                 // Check if any players has accumulated 15+ prestige points

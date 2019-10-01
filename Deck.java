@@ -1,6 +1,5 @@
 import java.util.*;
 
-// TODO: Make Deck into Stack Data Structure
 public class Deck {
     private int tier;
     private int count = 0;

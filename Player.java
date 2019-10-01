@@ -4,7 +4,7 @@ public class Player {
     private int prestige;
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
-    private Hashtable<String, Integer> cardTokens;
+    private Hashtable<String, Integer> developmentTokens;
     private Card[] reserve = new Card[3];
     private int turns = 0;
 
@@ -16,9 +16,9 @@ public class Player {
             this.gemTokens.put(gem, 0);
         }
 
-        this.cardTokens = new Hashtable<String, Integer>();
+        this.developmentTokens = new Hashtable<String, Integer>();
         for (String gem : this.gemTypes) {
-            this.cardTokens.put(gem, 0);
+            this.developmentTokens.put(gem, 0);
         }
     }
 
@@ -30,12 +30,12 @@ public class Player {
         this.prestige += prestige;
     }
 
-    public void addToken(int amnt, String token) {
-        this.gemTokens.replace(token, this.gemTokens.get(token) + amnt);
-    }
-
     public void getGemTokens() {
         System.out.println(this.gemTokens);
+    }
+
+    public void addToken(int amnt, String token) {
+        this.gemTokens.replace(token, this.gemTokens.get(token) + amnt);
     }
 
     public int getTurns() {
@@ -44,6 +44,26 @@ public class Player {
 
     public void incrementTurns() {
         turns++;
+    }
+
+    public void displayTokens() {
+        System.out.println(ConsoleColors.WHITE_BOLD
+                + "==========================================================================================================================");
+        System.out.println("Player's Gem Tokens:");
+        System.out.println(
+                "==========================================================================================================================");
+        System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
+        System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond") + "\t\t"
+                + this.developmentTokens.get("diamond"));
+        System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.gemTokens.get("sapphire") + "\t\t"
+                + this.developmentTokens.get("sapphire"));
+        System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.gemTokens.get("emerald") + "\t\t"
+                + this.developmentTokens.get("emerald"));
+        System.out.println(ConsoleColors.RED + "Ruby:\t\t" + this.gemTokens.get("ruby") + "\t\t"
+                + this.developmentTokens.get("ruby"));
+        System.out.println(ConsoleColors.PURPLE + "Onyx:\t\t" + this.gemTokens.get("onyx") + "\t\t"
+                + this.developmentTokens.get("onyx"));
+        System.out.println(ConsoleColors.RESET);
     }
 
     public void actions(Environment env) {
@@ -75,7 +95,8 @@ public class Player {
             }
         } while (!isValidAction);
 
-        if (action == "1") {
+        switch (action) {
+        case "1":
             String[] tokens = new String[3];
             boolean isRepeated;
 
@@ -95,17 +116,21 @@ public class Player {
                 tokens[i] = token;
             }
             takeThreeTokens(tokens, env);
-        } else if (action == "2") {
+            break;
+        case "2":
+            // Check if Gem input has at least 4 Tokens
             do {
                 System.out.print("Gem Type: ");
                 token = System.console().readLine().toLowerCase();
             } while (!this.isValidToken(token) || availableGems.get(token) <= 3);
 
             takeTwoTokens(token, env);
-        } else if (action == "3") {
+            break;
+        case "3":
             reserveDevelopmentCard(env);
-        } else if (action == "4") {
-
+            break;
+        case "4":
+            break;
         }
     }
 
