@@ -188,7 +188,7 @@ public class Environment {
     private void initializePlayers(int playerCount) {
         this.players = new Player[playerCount];
         for (int i = 0; i < playerCount; i++) {
-            this.players[i] = new Player();
+            this.players[i] = new Player((i + 1));
             this.players[i].getPrestige();
         }
     }

@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Player {
-    private int prestige;
+    private int playerNum;
+    private int prestige = 0;
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> developmentTokens;
@@ -9,8 +10,8 @@ public class Player {
     private int reserveCount = 0;
     private int turns = 0;
 
-    public Player() {
-        this.prestige = 0;
+    public Player(int num) {
+        this.playerNum = num;
 
         this.gemTokens = new Hashtable<String, Integer>();
         for (String gem : this.gemTypes) {
@@ -48,7 +49,7 @@ public class Player {
     }
 
     public void displayTokens() {
-        System.out.println(ConsoleColors.WHITE_BOLD + "Player Inventory:");
+        System.out.println(ConsoleColors.WHITE_BOLD + "Player " + playerNum + " Inventory:");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
@@ -73,7 +74,7 @@ public class Player {
     }
 
     public void actions(Environment env) {
-        System.out.println("Players Actions:");
+        System.out.println("Player " + playerNum + " Actions:");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(
@@ -95,6 +96,10 @@ public class Player {
                 if (action.equals(validAction)) {
                     isValidAction = true;
                 }
+            }
+
+            if (!isValidAction) {
+                System.out.println("Please Enter Valid Action: 1, 2, 3, 4");
             }
         } while (!isValidAction);
 
