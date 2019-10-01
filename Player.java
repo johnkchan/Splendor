@@ -77,6 +77,7 @@ public class Player {
 
         String action;
         String token;
+        Card selectedCard;
         String[] validActions = { "1", "2", "3", "4" };
         Hashtable<String, Integer> availableGems = env.getGemTokens();
         boolean isValidAction = false;
@@ -184,16 +185,7 @@ public class Player {
         String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
         String tokenType = card.getTokenType();
         int[] cost = card.getCost();
-        int index = -1;
-
-        for (int i = 0; i < 6; i++) {
-            if (tokenType.equals(gemTypes[i])) {
-                index = i;
-            }
-        }
-
-        this.prestige += card.getPrestige();
-        this.cardTokens[index] += 1;
+        int index;
 
         // Deduct cost from player's inventory
         for (int i = 0; i < 5; i++) {
@@ -202,5 +194,15 @@ public class Player {
 
         // Check if gold joker tokens are required to complete purchase
         this.gemTokens[5] -= 0;
+
+        index = -1;
+        for (int i = 0; i < 6; i++) {
+            if (tokenType.equals(gemTypes[i])) {
+                index = i;
+            }
+        }
+
+        this.prestige += card.getPrestige();
+        this.cardTokens[index] += 1;
     }
 }

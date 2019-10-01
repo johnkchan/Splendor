@@ -212,15 +212,14 @@ public class Environment {
     }
 
     public void displayNobles() {
-        String prestigeStr, headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
-        prestigeStr = headerStr = diamondStr = sapphireStr = emeraldStr = rubyStr = onyxStr = "";
+        String headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
+        headerStr = diamondStr = sapphireStr = emeraldStr = rubyStr = onyxStr = "";
 
-        System.out.println(ConsoleColors.WHITE_BOLD + "Nobles:");
+        System.out.println(ConsoleColors.WHITE_BOLD + "Nobles: (All Nobles Award 3 Prestige Points)");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
         for (Noble noble : this.nobles) {
-            prestigeStr += "Prestige: " + noble.getPrestige() + "\t\t\t";
             headerStr += "[Card Type]\t[Cost]\t\t";
             diamondStr += "Diamond :\t" + noble.getCardCost()[0] + "\t\t";
             sapphireStr += "Sapphire:\t" + noble.getCardCost()[1] + "\t\t";
@@ -229,7 +228,6 @@ public class Environment {
             onyxStr += "Onyx:\t\t" + noble.getCardCost()[4] + "\t\t";
         }
 
-        System.out.println(ConsoleColors.CYAN + prestigeStr);
         System.out.println(ConsoleColors.YELLOW + headerStr);
         System.out.println(ConsoleColors.WHITE + diamondStr);
         System.out.println(ConsoleColors.BLUE + sapphireStr);
@@ -252,7 +250,7 @@ public class Environment {
 
             for (int j = 0; j < 4; j++) {
                 Card card = this.table[i][j];
-                tokenStr += "Token: " + card.getTokenType() + "\t\t\t";
+                tokenStr += "Gem: " + card.getTokenType() + "\t\t\t";
                 prestigeStr += "Prestige: " + card.getPrestige() + "\t\t\t";
                 headerStr += "[Gem Type]\t[Cost]\t\t";
                 diamondStr += "Diamond :\t" + card.getCost()[0] + "\t\t";
