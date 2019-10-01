@@ -47,7 +47,7 @@ public class Player {
     }
 
     public void displayTokens() {
-        System.out.println(ConsoleColors.WHITE_BOLD + "Player's Gem Tokens:");
+        System.out.println(ConsoleColors.WHITE_BOLD + "Player Inventory:");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
@@ -66,6 +66,8 @@ public class Player {
         System.out.println(ConsoleColors.PURPLE + "Onyx:\t\t" + this.gemTokens.get("onyx") + "\t\t"
                 + this.developmentTokens.get("onyx") + "\t\t"
                 + (this.gemTokens.get("onyx") + this.developmentTokens.get("onyx")));
+        System.out.println(ConsoleColors.YELLOW + "Gold:\t\t" + this.gemTokens.get("gold joker") + "\t\t" + "N/A"
+                + "\t\t" + this.gemTokens.get("gold joker"));
         System.out.println(ConsoleColors.RESET);
     }
 
@@ -73,11 +75,10 @@ public class Player {
         System.out.println("Available Actions:");
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
-        System.out.println("[1] Take 3 gem tokens of different colors.");
-        System.out.println("[2] Take 2 gem tokens of the same color.");
-        System.out.println("[3] Reserve 1 development card and take 1 gold token (joker).");
         System.out.println(
-                "[4] Purchase 1 face-up development card from the middle of the table or a previously reserved one.");
+                "[1] Take 3 gem tokens of different colors.\t[3] Reserve 1 development card and take 1 gold token (joker).");
+        System.out.println(
+                "[2] Take 2 gem tokens of the same color.\t[4] Purchase 1 face-up development card from the middle of the table or a previously reserved one.");
 
         String action;
         String token;
