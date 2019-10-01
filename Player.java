@@ -5,7 +5,7 @@ public class Player {
     private int prestige = 0;
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
-    private Hashtable<String, Integer> developmentTokens;
+    private Hashtable<String, Integer> cardTokens;
     private Card[] reserve = new Card[3];
     private int reserveCount = 0;
     private int turns = 0;
@@ -18,9 +18,9 @@ public class Player {
             this.gemTokens.put(gem, 0);
         }
 
-        this.developmentTokens = new Hashtable<String, Integer>();
+        this.cardTokens = new Hashtable<String, Integer>();
         for (String gem : this.gemTypes) {
-            this.developmentTokens.put(gem, 0);
+            this.cardTokens.put(gem, 0);
         }
     }
 
@@ -54,20 +54,18 @@ public class Player {
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         System.out.println(ConsoleColors.YELLOW + "[Gem Types]\t[Tokens]\t[Dev. Cards]\t[Total]");
         System.out.println(ConsoleColors.WHITE + "Diamond:\t\t" + this.gemTokens.get("diamond") + "\t\t"
-                + this.developmentTokens.get("diamond") + "\t\t"
-                + (this.gemTokens.get("diamond") + this.developmentTokens.get("diamond")));
+                + this.cardTokens.get("diamond") + "\t\t"
+                + (this.gemTokens.get("diamond") + this.cardTokens.get("diamond")));
         System.out.println(ConsoleColors.BLUE + "Sapphire:\t" + this.gemTokens.get("sapphire") + "\t\t"
-                + this.developmentTokens.get("sapphire") + "\t\t"
-                + (this.gemTokens.get("sapphire") + this.developmentTokens.get("sapphire")));
+                + this.cardTokens.get("sapphire") + "\t\t"
+                + (this.gemTokens.get("sapphire") + this.cardTokens.get("sapphire")));
         System.out.println(ConsoleColors.GREEN + "Emerald:\t\t" + this.gemTokens.get("emerald") + "\t\t"
-                + this.developmentTokens.get("emerald") + "\t\t"
-                + (this.gemTokens.get("emerald") + this.developmentTokens.get("emerald")));
+                + this.cardTokens.get("emerald") + "\t\t"
+                + (this.gemTokens.get("emerald") + this.cardTokens.get("emerald")));
         System.out.println(ConsoleColors.RED + "Ruby:\t\t" + this.gemTokens.get("ruby") + "\t\t"
-                + this.developmentTokens.get("ruby") + "\t\t"
-                + (this.gemTokens.get("ruby") + this.developmentTokens.get("ruby")));
+                + this.cardTokens.get("ruby") + "\t\t" + (this.gemTokens.get("ruby") + this.cardTokens.get("ruby")));
         System.out.println(ConsoleColors.PURPLE + "Onyx:\t\t" + this.gemTokens.get("onyx") + "\t\t"
-                + this.developmentTokens.get("onyx") + "\t\t"
-                + (this.gemTokens.get("onyx") + this.developmentTokens.get("onyx")));
+                + this.cardTokens.get("onyx") + "\t\t" + (this.gemTokens.get("onyx") + this.cardTokens.get("onyx")));
         System.out.println(ConsoleColors.YELLOW + "Gold:\t\t" + this.gemTokens.get("gold joker") + "\t\t" + "N/A"
                 + "\t\t" + this.gemTokens.get("gold joker"));
         System.out.println(ConsoleColors.RESET);
@@ -188,6 +186,20 @@ public class Player {
 
     private void purchaseDevelopmentCard(Card card, Environment env) {
         // TODO: Implement Function
+        String tokenType = card.getTokenType();
+        int[] cost = card.getCost();
 
+        this.prestige += card.getPrestige();
+        this.cardTokens.replace(tokenType, this.cardTokens.get(tokenType) + 1);
+
+        // Deduct cost from player's inventory
+        this.gemTokens.replace("diamond", this.gemTokens.get("diamond") - (cost[0] - this.cardTokens.get("diamond")));
+        this.gemTokens.replace("sapphire",
+                this.gemTokens.get("sapphire") - (cost[0] - this.cardTokens.get("sapphire")));
+        this.gemTokens.replace("emerald", this.gemTokens.get("emerald") - (cost[0] - this.cardTokens.get("emerald")));
+        this.gemTokens.replace("ruby", this.gemTokens.get("ruby") - (cost[0] - this.cardTokens.get("ruby")));
+        this.gemTokens.replace("onyx", this.gemTokens.get("onyx") - (cost[0] - this.cardTokens.get("onyx")));
+
+        this.gemTokens.replace("gold joker", 0);
     }
 }
