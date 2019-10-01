@@ -176,6 +176,7 @@ public class Environment {
         // Shuffle all 3 decks
         for (Deck deck : this.decks) {
             deck.shuffle();
+            System.out.println(deck.getCount());
         }
     }
 

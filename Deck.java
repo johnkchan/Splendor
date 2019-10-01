@@ -22,9 +22,13 @@ public class Deck {
         return this.tier;
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
     public void addCard(Card card) {
-        this.cards[count] = card;
-        count++;
+        this.cards[this.count] = card;
+        this.count++;
     }
 
     public void shuffle() {
@@ -42,4 +46,8 @@ public class Deck {
         }
     }
 
+    public Card draw() {
+        this.count--;
+        return this.cards[this.count];
+    }
 }
