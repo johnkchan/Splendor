@@ -10,4 +10,8 @@ public class Noble {
     public int getPrestige() {
         return this.prestige;
     }
+
+    public int[] getCardCost() {
+        return this.cardCost;
+    }
 }
