@@ -3,8 +3,9 @@ import java.util.*;
 public class Environment {
     private Hashtable<String, Integer> gemTokens;
     private Noble[] nobles;
-    private Player[] players;
     private Deck[] decks = new Deck[3];
+    private Card[][] table;
+    private Player[] players;
 
     public Environment(int playerCount) {
         this.initializeTokens(playerCount);
@@ -72,11 +73,12 @@ public class Environment {
 
     // initialize tier 1,2,3 decks
     private void initializeDecks() {
+        this.table = new Card[3][4];
+
         for (int i = 0; i < 3; i++) {
             this.decks[i] = new Deck(i + 1);
         }
 
-        // Diamond, Sapphire, Emerald, Ruby, Onyx
         // Tier 1 Deck
         this.decks[0].addCard(new Card("diamond", new int[] { 0, 1, 1, 1, 1 }, 0));
         this.decks[0].addCard(new Card("diamond", new int[] { 0, 1, 2, 1, 1 }, 0));
@@ -173,10 +175,12 @@ public class Environment {
         this.decks[2].addCard(new Card("onyx", new int[] { 0, 0, 0, 7, 0 }, 4));
         this.decks[2].addCard(new Card("onyx", new int[] { 0, 0, 0, 7, 3 }, 5));
 
-        // Shuffle all 3 decks
-        for (Deck deck : this.decks) {
-            deck.shuffle();
-            System.out.println(deck.getCount());
+        // Shuffle & Select Top 4 Cards from each Deck
+        for (int i = 0; i < 3; i++) {
+            this.decks[i].shuffle();
+            for (int j = 0; j < 4; j++) {
+                this.table[i][j] = this.decks[i].draw();
+            }
         }
     }
 
@@ -213,11 +217,21 @@ public class Environment {
         }
     }
 
+    public void displayTable() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Tier " + this.decks[i].getTier());
+            for (int j = 0; j < 4; j++) {
+                this.table[i][j].display();
+            }
+        }
+    }
+
     private void initializeGame(int playerCount) {
         boolean isEnd = false;
 
         while (!isEnd) {
             for (Player player : this.players) {
+                this.displayTable();
                 player.actions(this);
                 player.incrementTurns();
                 // Check if any players has accumulated 15+ prestige points
