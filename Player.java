@@ -6,6 +6,7 @@ public class Player {
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> developmentTokens;
     private Card[] reserve = new Card[3];
+    private int reserveCount = 0;
     private int turns = 0;
 
     public Player() {
@@ -129,7 +130,12 @@ public class Player {
             takeTwoTokens(token, env);
             break;
         case "3":
-            reserveDevelopmentCard(env);
+            // Check if player has less than 3 reserved cards
+            if (this.reserveCount < 3) {
+
+            } else {
+                // reserveDevelopmentCard(card, env);
+            }
             break;
         case "4":
             break;
@@ -159,8 +165,10 @@ public class Player {
         env.takeGemTokens(2, token);
     }
 
-    private void reserveDevelopmentCard(Environment env) {
-        // TODO: Add reserve functionality
+    private void reserveDevelopmentCard(Card card, Environment env) {
+        this.reserve[this.reserveCount] = card;
+        this.reserveCount++;
+
         if (env.getGemTokens().get("gold joker") >= 1) {
             this.addToken(1, "gold joker");
             env.takeGemTokens(1, "gold joker");
