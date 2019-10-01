@@ -5,7 +5,7 @@ public class Player {
     private String[] gemTypes = { "diamond", "sapphire", "emerald", "ruby", "onyx", "gold joker" };
     private Hashtable<String, Integer> gemTokens;
     private Hashtable<String, Integer> cardTokens;
-    private Card[] reserve;
+    private Card[] reserve = new Card[3];
     private int turns = 0;
 
     public Player() {
@@ -34,7 +34,7 @@ public class Player {
         this.gemTokens.replace(token, this.gemTokens.get(token) + amnt);
     }
 
-    public void getGemCount() {
+    public void getGemTokens() {
         System.out.println(this.gemTokens);
     }
 
@@ -107,8 +107,6 @@ public class Player {
         } else if (action == "4") {
 
         }
-
-        env.displayGems();
     }
 
     // Helper Function to Validate Token Input
