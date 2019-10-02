@@ -211,7 +211,7 @@ public class Environment {
         System.out.println(ConsoleColors.RESET);
     }
 
-    public void displayNobles() {
+    public void displayNobles(Noble[] nobles) {
         String headerStr, diamondStr, sapphireStr, emeraldStr, rubyStr, onyxStr;
         headerStr = diamondStr = sapphireStr = emeraldStr = rubyStr = onyxStr = "";
 
@@ -219,7 +219,7 @@ public class Environment {
         System.out.println(
                 "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 
-        for (Noble noble : this.nobles) {
+        for (Noble noble : nobles) {
             headerStr += "[Card Type]\t[Cost]\t\t";
             diamondStr += "Diamond :\t" + noble.getCardCost()[0] + "\t\t";
             sapphireStr += "Sapphire:\t" + noble.getCardCost()[1] + "\t\t";
@@ -271,16 +271,59 @@ public class Environment {
         }
     }
 
+    // Check if player has met Noble cost
+    private void checkVistingNobles(Player player, int playerCount) {
+        int noblesCount = playerCount + 1;
+        int count = 0;
+        Noble[] visitingNobles = new Noble[noblesCount];
+        boolean isCardCostMet = true;
+        int[] cost;
+
+        for (Noble noble : this.nobles) {
+            cost = noble.getCardCost();
+            isCardCostMet = true;
+
+            for (int i = 0; i < 5; i++) {
+                if (cost[i] > player.getCardTokens()[i]) {
+                    isCardCostMet = false;
+                }
+            }
+
+            if (isCardCostMet) {
+                visitingNobles[count] = noble;
+                count++;
+            }
+        }
+
+        if (count == 1) {
+            System.out.println("Noble has visited");
+            player.addPrestige(3);
+
+        } else if (count > 1) {
+            String selectedNoble;
+            int indexOfSelectedNoble;
+
+            this.displayNobles(visitingNobles);
+            System.out.println("Select Visit Noble: ");
+            selectedNoble = System.console().readLine();
+            indexOfSelectedNoble = Integer.parseInt(selectedNoble);
+
+            player.addPrestige(3);
+        }
+    }
+
     private void initializeGame(int playerCount) {
         boolean isEnd = false;
 
         while (!isEnd) {
             for (Player player : this.players) {
-                this.displayNobles();
+                this.displayNobles(this.nobles);
                 this.displayTable();
                 player.displayTokens();
                 player.actions(this);
+                this.checkVistingNobles(player, playerCount);
                 player.incrementTurns();
+
                 // Check if any players has accumulated 15+ prestige points
                 if (player.getPrestige() >= 15) {
                     isEnd = true;

@@ -38,6 +38,10 @@ public class Player {
         this.gemTokens[index] += amnt;
     }
 
+    public int[] getCardTokens() {
+        return this.cardTokens;
+    }
+
     public int getTurns() {
         return this.turns;
     }
@@ -143,6 +147,7 @@ public class Player {
             }
             break;
         case "4":
+            // purchaseDevelopmentCard(card, env)
             break;
         }
     }
@@ -187,7 +192,7 @@ public class Player {
         int[] cost = card.getCost();
         int index;
 
-        // Deduct cost from player's inventory
+        // Deduct Development Card Cost from Player's Inventory
         for (int i = 0; i < 5; i++) {
             this.gemTokens[i] -= (cost[i] - this.cardTokens[i]);
         }
